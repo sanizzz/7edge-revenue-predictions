@@ -9,9 +9,9 @@ import warnings
 warnings.filterwarnings('ignore')
 
 def prepare_data():
-    df = pd.read_csv(r"7edge-revenue-predictions/revenue_predictions.csv")
+    df = pd.read_csv(r"C:\Users\sanid\OneDrive\Desktop\7EDGE PREEDICTION MODEL\7edge-revenue-predictions\synthetic_revenue_data.csv")
     df.columns = df.columns.str.strip()
-    df['Date'] = pd.to_datetime(df['Date'], format='%d/%m/%Y')
+    df['Date'] = pd.to_datetime(df['Date'], dayfirst=False, errors='coerce')
     df.set_index('Date', inplace=True)
     df = df.asfreq('D')
     df['MA7'] = df['Revenue'].rolling(window=7).mean()
